@@ -41,11 +41,13 @@ namespace Permutation_Validation
 
             foreach (var keyValuePair in mapOne)
             {
+                char c = keyValuePair.Key;
+
                 // If the character is not in both hashmaps, the words are not permutations.
-                if (!mapTwo.ContainsKey(keyValuePair.Key)) return false;
+                if (!mapTwo.ContainsKey(c)) return false;
 
                 // If the character occurs a different number of times, the words are not permutations.
-                if (keyValuePair.Value != mapTwo[keyValuePair.Key]) return false;
+                if (mapTwo[c] != keyValuePair.Value) return false;
             }
 
             return true;
