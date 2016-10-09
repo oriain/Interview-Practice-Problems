@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Permutation_Validation
 {
@@ -6,9 +8,23 @@ namespace Permutation_Validation
     {
         public static bool IsValidPermutation(string wordOne, string wordTwo)
         {
-            Dictionary<char, int> mapOne = BuildMap(wordOne);
-            Dictionary<char, int> mapTwo = BuildMap(wordTwo);
-            return AreEqual(mapOne, mapTwo);
+            #region First implementation
+            //Dictionary<char, int> mapOne = BuildMap(wordOne);
+            //Dictionary<char, int> mapTwo = BuildMap(wordTwo);
+            //return AreEqual(mapOne, mapTwo);
+            #endregion
+
+            // Guard against nulls
+            wordOne = wordOne ?? string.Empty;
+            wordTwo = wordTwo ?? string.Empty;
+
+            // If words are not the same length, they are not permutations.
+            if (wordOne.Length != wordTwo.Length) return false;
+
+            // Add up the numeric value of each word.  They should be the same for permutations.
+            int totalOne = wordOne.Sum(c => c);
+            int totalTwo = wordTwo.Sum(c => c);
+            return totalOne == totalTwo;
         }
 
         private static Dictionary<char, int> BuildMap(string word)
