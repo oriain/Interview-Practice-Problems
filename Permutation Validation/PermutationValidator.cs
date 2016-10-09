@@ -22,8 +22,8 @@ namespace Permutation_Validation
             if (wordOne.Length != wordTwo.Length) return false;
 
             // Add up the numeric value of each word.  They should be the same for permutations.
-            int totalOne = wordOne.Sum(c => c);
-            int totalTwo = wordTwo.Sum(c => c);
+            int totalOne = wordOne.Sum(c => c ^ 2);
+            int totalTwo = wordTwo.Sum(c => c ^ 2);
             return totalOne == totalTwo;
         }
 

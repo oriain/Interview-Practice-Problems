@@ -80,5 +80,14 @@ namespace Permutation_Validation
         //    bool isPermuation = PermutationValidator.IsValidPermutation(wordOne, wordTwo);
         //    Assert.IsTrue(isPermuation);
         //}
+
+        [Test]
+        public void BanCamTest()
+        {
+            string wordOne = "ban";
+            string wordTwo = "cam";
+            bool isPermuation = PermutationValidator.IsValidPermutation(wordOne, wordTwo);
+            Assert.IsFalse(isPermuation);
+        }
     }
 }
